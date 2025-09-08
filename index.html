@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobConnect - Plataforma de Empleos</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Archivo CSS personalizado -->
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Meta tags para SEO -->
+    <meta name="description" content="Plataforma de empleos que conecta empresas con los mejores talentos. Encuentra trabajo o busca candidatos.">
+    <meta name="keywords" content="empleos, trabajo, empresas, candidatos, bolsa de trabajo, reclutamiento">
+    <meta name="author" content="JobConnect">
+</head>
+<body class="font-inter antialiased">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b border-gray-100 fixed w-full top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <!-- Logo SVG moderno -->
+                    <div class="">
+                        <img src="assets/images/logo.jpg" alt="" class=" h-8">
+                    </div>
+                    <!-- <div>
+                        <h1 class="text-2xl font-bold text-gray-800">ContaPlus</h1>
+                        <p class="text-xs text-gray-500 font-medium">Servicios Contables</p>
+                    </div> -->
+                </div>
+                
+                <!-- Navegación Desktop -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-gray-600 hover:text-yellow-600 font-medium transition-colors duration-200 relative nav-link">Inicio</a>
+                    <a href="#servicios" class="text-gray-600 hover:text-yellow-600 font-medium transition-colors duration-200 relative nav-link">Servicios</a>
+                    <a href="#about" class="text-gray-600 hover:text-yellow-600 font-medium transition-colors duration-200 relative nav-link">Nosotros</a>
+                    <a href="#contacto" class="text-gray-600 hover:text-yellow-600 font-medium transition-colors duration-200 relative nav-link">Contacto</a>
+                    <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-6 py-2 rounded-lg font-medium hover:from-yellow-600 hover:to-yellow-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                        Consulta Gratis
+                    </button>
+                </div>
+                
+                <!-- Botón menú móvil -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-yellow-600 focus:outline-none transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Menú móvil -->
+            <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-gray-100 pt-4">
+                <div class="space-y-3">
+                    <a href="#inicio" class="block text-gray-600 hover:text-yellow-600 font-medium py-2 transition-colors">Inicio</a>
+                    <a href="#servicios" class="block text-gray-600 hover:text-yellow-600 font-medium py-2 transition-colors">Servicios</a>
+                    <a href="#about" class="block text-gray-600 hover:text-yellow-600 font-medium py-2 transition-colors">Nosotros</a>
+                    <a href="#contacto" class="block text-gray-600 hover:text-yellow-600 font-medium py-2 transition-colors">Contacto</a>
+                    <button class="w-full bg-gradient-to-r from-gray-400 to-gray-500 text-white px-6 py-3 rounded-lg font-medium hover:from-gray-500 hover:to-gray-600 transition-all mt-4 shadow-lg">
+                        Consulta Gratis
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sección Hero -->
+    <section id="inicio" class="bg-gradient-to-br from-gray-50 to-blue-50 pt-24 pb-16 min-h-screen flex items-center">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center justify-between">
+                <!-- Contenido izquierdo - Slogan -->
+                <div class="lg:w-1/2 lg:pr-12 mb-12 lg:mb-0">
+                    <div class="space-y-6">
+                        
+                        <!-- Título principal -->
+                        <h1 class="hero-title text-3xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight">
+                            Tu <span class="text-yellow-600">Confianza</span> nuestro <span class="text-gray-500">Legado</span>
+                        </h1>
+                        
+                        <!-- Subtítulo -->
+                        <p class="text-xl text-gray-600 leading-relaxed">
+                            La plataforma líder que une empresas que buscan talento con profesionales que buscan el trabajo de sus sueños.
+                        </p>
+                        
+                     
+                        
+                        <!-- Botones de acción -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                                Buscar Trabajo
+                            </button>
+                            <button class="border-2 border-gray-400 text-gray-700 px-8 py-4 rounded-lg font-semibold hover:border-yellow-500 hover:text-yellow-600 hover:bg-yellow-50 transition-all duration-200">
+                                <a href="#servicios">Publicar Vacante</a>
+                            </button>
+                        </div>
+                        
+                        <!-- Estadísticas -->
+                        <div class="flex items-center space-x-8 pt-8 border-t border-gray-200">
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-yellow-600">1000+</div>
+                                <div class="text-sm text-gray-600">Empleos Activos</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-gray-500">500+</div>
+                                <div class="text-sm text-gray-600">Empresas Registradas</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-yellow-600">95%</div>
+                                <div class="text-sm text-gray-600">Tasa de Éxito</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2 lg:pl-8">
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl shadow-2xl">
+                            <img src="https://cdn.pixabay.com/photo/2020/07/08/04/12/work-5382501_1280.jpg" alt="Personas trabajando en oficina moderna" 
+                                 class="w-full h-96 object-cover rounded-xl shadow-lg">
+                        </div>      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">¿Qué Ofrecemos?</h2>
+            
+            <!-- Carrusel de servicios -->
+            <div id="services-carousel" class="relative w-full max-w-4xl mx-auto">
+                <!-- Carousel wrapper -->
+                <div class="relative h-80 overflow-hidden rounded-2xl shadow-2xl">
+                    <!-- Item 1 - Empresas que buscan trabajadores -->
+                    <div class="carousel-item active duration-700 ease-in-out absolute inset-0">
+                        <div class="relative h-full bg-gradient-to-br from-yellow-500 via-yellow-600 to-yellow-700 flex items-center justify-center text-white">
+                            <div class="text-center p-8">
+                                <svg class="w-16 h-16 mx-auto mb-4 text-yellow-200" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                                </svg>
+                                <h3 class="text-3xl font-bold mb-4">Empresas Buscan Trabajadores</h3>
+                                <p class="text-xl text-yellow-100">Conectamos empresas exitosas con los mejores talentos disponibles en el mercado laboral</p>
+                                <button class="mt-4 bg-white text-yellow-600 px-6 py-2 rounded-lg font-semibold hover:bg-yellow-50 transition-colors shadow-lg">
+                                    Ver Empresas
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 - Regístrate para encontrar trabajo -->
+                    <div class="carousel-item duration-700 ease-in-out absolute inset-0 opacity-0">
+                        <div class="relative h-full bg-gradient-to-br from-gray-400 via-gray-500 to-gray-600 flex items-center justify-center text-white">
+                            <div class="text-center p-8">
+                                <svg class="w-16 h-16 mx-auto mb-4 text-gray-200" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                                <h3 class="text-3xl font-bold mb-4">Regístrate para Encontrar Trabajo</h3>
+                                <p class="text-xl text-gray-100">Crea tu perfil profesional y accede a oportunidades que representen la riqueza de tu talento</p>
+                                <button class="mt-4 bg-white text-gray-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-50 transition-colors shadow-lg">
+                                    Registrarse Ahora
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 - Dudas y quejas -->
+                    <div class="carousel-item duration-700 ease-in-out absolute inset-0 opacity-0">
+                        <div class="relative h-full bg-gradient-to-br from-white via-gray-50 to-gray-100 flex items-center justify-center text-gray-800 border border-gray-200">
+                            <div class="text-center p-8">
+                                <svg class="w-16 h-16 mx-auto mb-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+                                </svg>
+                                <h3 class="text-3xl font-bold mb-4 text-gray-800">Dudas y Quejas</h3>
+                                <p class="text-xl text-gray-600">¿Tienes alguna duda o queja? Nuestros procesos limpios y transparentes garantizan una respuesta rápida</p>
+                                <button class="mt-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-yellow-600 hover:to-yellow-700 transition-all shadow-lg">
+                                    Contactar Soporte
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Indicadores -->
+                <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
+                    <button type="button" class="w-3 h-3 rounded-full bg-white/50 hover:bg-white transition-all duration-200 carousel-indicator active" aria-label="Slide 1" data-slide="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full bg-white/30 hover:bg-white transition-all duration-200 carousel-indicator" aria-label="Slide 2" data-slide="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full bg-white/30 hover:bg-white transition-all duration-200 carousel-indicator" aria-label="Slide 3" data-slide="2"></button>
+                </div>
+                
+                <!-- Controles de navegación -->
+                <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none carousel-prev">
+                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-white/30 transition-all duration-200 shadow-lg">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </span>
+                </button>
+                <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none carousel-next">
+                    <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm group-hover:bg-white/30 transition-all duration-200 shadow-lg">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            
+            <!-- Servicios adicionales en grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-yellow-200">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8 9a3 3 0 100-6 3 3 0 000 6zM8 11a6 6 0 016 6H2a6 6 0 016-6zM16 7a1 1 0 10-2 0v1h-1a1 1 0 100 2h1v1a1 1 0 102 0v-1h1a1 1 0 100-2h-1V7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Perfiles Verificados</h3>
+                    <p class="text-gray-600">Todos nuestros candidatos pasan por un proceso de verificación riguroso que garantiza el éxito.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-gray-300">
+                    <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Matching Inteligente</h3>
+                    <p class="text-gray-600">Conectamos a las personas con trabajos que representen la riqueza de sus habilidades y experiencia.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-yellow-200">
+                    <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-gray-900">Soporte Limpio y Transparente</h3>
+                    <p class="text-gray-600">Nuestros procesos puros y transparentes garantizan soporte 24/7 con la máxima calidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección About -->
+    <section id="about" class="py-16">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-3xl font-bold mb-4">Acerca de Nosotros</h2>
+                    <p class="text-gray-600 mb-4">
+                        Somos una empresa comprometida con la excelencia y la innovación. 
+                        Nuestro objetivo es brindar las mejores soluciones para nuestros clientes.
+                    </p>
+                    <p class="text-gray-600">
+                        Con años de experiencia en el mercado, hemos desarrollado 
+                        una metodología única que garantiza resultados excepcionales.
+                    </p>
+                </div>
+                <div class="md:w-1/2 md:pl-8">
+                    <div class="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
+                        <span class="text-gray-500">Imagen placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="py-16 bg-gradient-to-br from-yellow-500 to-yellow-600 text-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Contáctanos</h2>
+            <div class="max-w-lg mx-auto">
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <input type="text" id="name" placeholder="Tu nombre" 
+                               class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 border border-gray-200">
+                    </div>
+                    <div>
+                        <input type="email" id="email" placeholder="Tu email" 
+                               class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 border border-gray-200">
+                    </div>
+                    <div>
+                        <textarea id="message" rows="4" placeholder="Tu mensaje" 
+                                  class="w-full px-4 py-2 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 border border-gray-200"></textarea>
+                    </div>
+                    <button type="submit" 
+                            class="w-full bg-white text-yellow-600 py-3 rounded-lg font-semibold hover:bg-gray-50 transition duration-300 shadow-lg">
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Mi Landing Page. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
