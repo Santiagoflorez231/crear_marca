@@ -249,3 +249,78 @@ html {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.8; }
 }
+
+/* Estilos para la sección de equipo */
+.team-member {
+    transition: all 0.5s ease;
+    position: relative;
+    box-shadow: 0 10px 30px -15px rgba(0,0,0,0.15);
+}
+
+.team-member:hover {
+    transform: translateY(-8px);
+}
+
+.team-member .view-profile-btn {
+    opacity: 0.9;
+    transform: scale(1);
+}
+
+.team-member:hover .view-profile-btn {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Estilos para el modal de equipo */
+#team-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+}
+
+#team-modal .prose p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+#team-modal .scale-90 {
+    transform: scale(0.9);
+}
+
+#team-modal .scale-100 {
+    transform: scale(1);
+}
+
+/* Mejoras responsivas para el modal */
+@media (max-width: 640px) {
+    #team-modal .prose p {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+    }
+    
+    #modal-bio {
+        max-height: 60vh;
+        overflow-y: auto;
+        padding-right: 0.5rem;
+    }
+}
+
+/* Personalización del scrollbar para el modal en dispositivos móviles */
+#modal-bio::-webkit-scrollbar {
+    width: 4px;
+}
+
+#modal-bio::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#modal-bio::-webkit-scrollbar-thumb {
+    background: #d4af37;
+    border-radius: 10px;
+}
+
+#modal-bio::-webkit-scrollbar-thumb:hover {
+    background: #b8941f;
+}

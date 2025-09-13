@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initActiveNavigation();
     initCarousel(); // Nueva función para el carrusel
+    initTeamMembers(); // Función para los perfiles del equipo
 });
 
 // Inicializar carrusel
@@ -386,6 +387,104 @@ window.addEventListener('error', (e) => {
 });
 
 // Exportar funciones para uso global si es necesario
+// Función para manejar la interactividad de los integrantes del equipo
+function initTeamMembers() {
+    const teamMembers = document.querySelectorAll('.team-member');
+    const modal = document.getElementById('team-modal');
+    const closeModal = document.getElementById('close-modal');
+    
+    // Datos de los integrantes del equipo
+    const teamData = [
+        {
+            id: 1,
+            name: "Sara Yulitza Bedoya Niño",
+            role: "Directora General",
+            image: "/assets/images/sara.jpg",
+            bio: `<p>Con más de 15 años de experiencia en gestión de recursos humanos, Ana lidera Núcleo RH con una visión innovadora y enfocada en resultados.</p>
+                  <p>Su expertise en transformación organizacional ha sido clave para posicionar a Núcleo RH como referente en el sector de gestión de talento humano.</p>`,
+            color: "from-yellow-500 to-yellow-600"
+        },
+        {
+            id: 2,
+            name: "Emmanuel Duque Velilla",
+            role: "Director de Operaciones",
+            image: "/assets/images/emmanuel.jpg",
+            bio: `<p>Emmanuel es responsable de desarrollar e implementar estrategias operativas que garantizan la eficiencia de nuestros procesos.</p>
+                  <p>Su capacidad para optimizar recursos y mejorar la calidad de servicio ha sido fundamental para el crecimiento sostenido de Núcleo RH.</p>`,
+            color: "from-gray-500 to-gray-600"
+        },
+        {
+            id: 3,
+            name: "Sebastián Lópera tejada",
+            role: "Director de Talento",
+            image: "/assets/images/sebastian.jpg",
+            bio: `<p>Laura lidera el equipo de reclutamiento y selección con un enfoque estratégico y orientado a las personas.</p>
+                  <p>Su profundo conocimiento del mercado laboral y su capacidad para identificar talento excepcional hacen de ella una pieza fundamental en nuestro equipo directivo.</p>`,
+            color: "from-yellow-500 to-yellow-600"
+        }
+    ];
+    
+    if (!teamMembers.length || !modal) return;
+    
+    function openMemberModal(memberId) {
+        const member = teamData.find(m => m.id === parseInt(memberId));
+        
+        if (!member) return;
+        
+        document.getElementById('modal-name').textContent = member.name;
+        document.getElementById('modal-role').textContent = member.role;
+        document.getElementById('modal-bio').innerHTML = member.bio;
+        
+        const avatar = document.getElementById('modal-avatar');
+        avatar.innerHTML = `<img src="${member.image}" alt="${member.name}" class="w-full h-full object-cover">`;
+        
+        const isMobile = window.innerWidth < 640;
+        document.getElementById('modal-header').className = `bg-gradient-to-r ${member.color} ${isMobile ? 'h-24' : 'h-32'} flex items-end ${isMobile ? 'p-4' : 'p-6'}`;
+        
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        const modalContent = modal.querySelector('div');
+        modalContent.classList.remove('scale-90');
+        modalContent.classList.add('scale-100');
+        
+        modal.scrollTop = 0;
+        
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModalFunction() {
+        const modalContent = modal.querySelector('div');
+        modalContent.classList.remove('scale-100');
+        modalContent.classList.add('scale-90');
+        
+        modal.classList.add('opacity-0');
+        
+        // Esperar a que termine la animación antes de deshabilitar completamente el modal
+        setTimeout(() => {
+            modal.classList.add('pointer-events-none');
+            // Restaurar scroll en el body
+            document.body.style.overflow = '';
+        }, 300);
+    }
+    
+    // Añadir event listener a cada integrante
+    teamMembers.forEach(member => {
+        member.addEventListener('click', function() {
+            const memberId = this.getAttribute('data-member-id');
+            if (memberId) openMemberModal(memberId);
+        });
+    });
+    
+    // Evento para cerrar el modal con el botón
+    if (closeModal) {
+        closeModal.addEventListener('click', closeModalFunction);
+    }
+    
+    // Cerrar modal al hacer clic fuera del contenido
+    modal.addEventListener('click', function(e) {
+        if (e.target === this) closeModalFunction();
+    });
+}
+
 window.LandingPage = {
     showNotification,
     toggleTheme,
