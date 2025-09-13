@@ -4,17 +4,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Landing page cargada correctamente');
     
-    // Inicializar todas las funcionalidades
     initMobileMenu();
     initSmoothScroll();
     initContactForm();
     initScrollAnimations();
     initActiveNavigation();
-    initCarousel(); // Nueva función para el carrusel
-    initTeamMembers(); // Función para los perfiles del equipo
+    initCarousel(); 
+    initTeamMembers(); 
+    initBusinessModelModal(); 
 });
 
-// Inicializar carrusel
 function initCarousel() {
     const carousel = document.getElementById('services-carousel');
     if (!carousel) return;
@@ -483,6 +482,45 @@ function initTeamMembers() {
     modal.addEventListener('click', function(e) {
         if (e.target === this) closeModalFunction();
     });
+}
+
+// Inicializar modal para modelo de negocios
+function initBusinessModelModal() {
+    const showModalButton = document.getElementById('show-business-model');
+    const modal = document.getElementById('business-model-modal');
+    const closeButtons = modal ? modal.querySelectorAll('.close-modal') : [];
+    
+    if (showModalButton && modal) {
+        // Abrir modal
+        showModalButton.addEventListener('click', () => {
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // Evitar scroll en el fondo
+        });
+        
+        // Cerrar modal con botones
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            });
+        });
+        
+        // Cerrar modal haciendo clic fuera de ella
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+        
+        // Cerrar con la tecla Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+    }
 }
 
 window.LandingPage = {
