@@ -273,10 +273,25 @@ html {
 
 /* Estilos para el modal de equipo */
 #team-modal {
-    display: flex;
-    align-items: center;
+    padding: 2rem 1rem;
+    overflow-y: auto;
+    align-items: flex-start;
     justify-content: center;
-    min-height: 100%;
+    max-height: 100vh;
+}
+
+/* Contenedor principal del modal con scroll */
+#team-modal > div {
+    max-height: calc(100vh - 4rem);
+    margin: 0 auto;
+    overflow-y: auto;
+}
+
+/* Área de biografía sin restricciones */
+#modal-bio {
+    max-height: none;
+    overflow: visible;
+    padding-right: 0;
 }
 
 #team-modal .prose p {
@@ -294,33 +309,63 @@ html {
 
 /* Mejoras responsivas para el modal */
 @media (max-width: 640px) {
+    #team-modal {
+        padding: 1rem 0.5rem;
+    }
+    
+    #team-modal > div {
+        max-height: calc(100vh - 2rem);
+    }
+    
     #team-modal .prose p {
         margin-bottom: 0.75rem;
         line-height: 1.6;
     }
     
     #modal-bio {
-        max-height: 60vh;
-        overflow-y: auto;
-        padding-right: 0.5rem;
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
     }
 }
 
-/* Personalización del scrollbar para el modal en dispositivos móviles */
-#modal-bio::-webkit-scrollbar {
-    width: 4px;
+@media (min-width: 641px) {
+    #team-modal > div {
+        max-height: calc(100vh - 4rem);
+    }
+    
+    #modal-bio {
+        max-height: none;
+        overflow: visible;
+        padding-right: 0;
+    }
 }
 
-#modal-bio::-webkit-scrollbar-track {
+/* Personalización del scrollbar para el modal */
+#team-modal > div::-webkit-scrollbar {
+    width: 6px;
+}
+
+#team-modal > div::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 10px;
 }
 
-#modal-bio::-webkit-scrollbar-thumb {
+#team-modal > div::-webkit-scrollbar-thumb {
     background: #d4af37;
     border-radius: 10px;
 }
 
-#modal-bio::-webkit-scrollbar-thumb:hover {
+#team-modal > div::-webkit-scrollbar-thumb:hover {
     background: #b8941f;
+}
+
+/* Scroll suave para el contenido del modal */
+#team-modal > div {
+    scroll-behavior: smooth;
+}
+
+/* Prevenir scroll del fondo cuando modal está abierta */
+body.modal-open {
+    overflow: hidden;
 }
