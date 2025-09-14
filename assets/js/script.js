@@ -434,7 +434,7 @@ function initTeamMembers() {
       id: 2,
       name: "Emmanuel Duque",
       role: "Gerente de Marketing",
-      image: "../images/emmanuel.jpg",
+      image: "assets/images/emmanuel.jpg",
       bio: `<p>Profesional creativo y orientado al crecimiento empresarial, con experiencia en la construcción y dirección de planes de marketing que fortalecen la visibilidad y posicionamiento de marcas. Cuenta con capacidad para liderar equipos, identificar oportunidades de mercado y gestionar campañas publicitarias integrales.</p>
         <p>Se distingue por su enfoque en la innovación, la satisfacción del cliente y el logro de objetivos comerciales, con un sólido dominio de herramientas digitales y tecnológicas.</p>
         <h4 class="font-bold mt-4 mb-2">Competencias</h4>
