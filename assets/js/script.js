@@ -410,7 +410,7 @@ function initTeamMembers() {
       id: 1,
       name: "Sara Yulitza Bedoya Niño",
       role: "Gerente General",
-      image: "/assets/images/sara.jpg",
+      image: "assets/images/sara.jpg",
       bio: `<p>Directiva con experiencia consolidada en liderazgo organizacional, formulación de estrategias y coordinación de equipos de alto rendimiento. Orientada a la obtención de resultados y al cumplimiento de metas, se caracteriza por su capacidad para tomar decisiones estratégicas, optimizar recursos y dirigir procesos que fortalecen la productividad empresarial.</p>
                   <p>Posee competencias analíticas, habilidades interpersonales y gran adaptabilidad frente a entornos exigentes, con un manejo avanzado de herramientas ofimáticas.</p>
                   <h4 class="font-bold mt-4 mb-2">Competencias</h4>
@@ -434,7 +434,7 @@ function initTeamMembers() {
       id: 2,
       name: "Emmanuel Duque",
       role: "Gerente de Marketing",
-      image: "/assets/images/emmanuel.jpg",
+      image: "assets/images/emmanuel.jpg",
       bio: `<p>Profesional creativo y orientado al crecimiento empresarial, con experiencia en la construcción y dirección de planes de marketing que fortalecen la visibilidad y posicionamiento de marcas. Cuenta con capacidad para liderar equipos, identificar oportunidades de mercado y gestionar campañas publicitarias integrales.</p>
         <p>Se distingue por su enfoque en la innovación, la satisfacción del cliente y el logro de objetivos comerciales, con un sólido dominio de herramientas digitales y tecnológicas.</p>
         <h4 class="font-bold mt-4 mb-2">Competencias</h4>
@@ -460,7 +460,7 @@ function initTeamMembers() {
       id: 3,
       name: "Sebastián Lopera",
       role: "Líder de Talento Humano",
-      image: "/assets/images/sebastian.jpg",
+      image: "assets/images/sebastian.jpg",
       bio: `<p>Especialista en gestión de personas con experiencia en el diseño e implementación de políticas que impulsan el desarrollo profesional, la motivación y el compromiso del talento humano. Se caracteriza por su visión estratégica, liderazgo cercano y capacidad de comunicación efectiva para generar una cultura organizacional sólida.</p>
         <p>Maneja con eficiencia el cambio, promueve la diversidad y utiliza herramientas tecnológicas para potenciar la gestión de recursos humanos.</p>
         <h4 class="font-bold mt-4 mb-2">Competencias</h4>
