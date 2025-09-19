@@ -613,6 +613,53 @@
         </div>
     </section>
 
+    <!-- Sección Video Institucional -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <!-- Título de la sección -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-6 text-gray-900">Conoce Nuestro Equipo</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-yellow-500 to-gray-400 mx-auto rounded-full mb-6"></div>
+                <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                    Escucha directamente de nuestro equipo lo que nos hace únicos. Descubre nuestra pasión por conectar talento 
+                    con oportunidades que trascienden el tiempo.
+                </p>
+            </div>
+
+            <!-- Contenedor del video -->
+            <div class="max-w-4xl mx-auto">
+                <!-- Reproductor de video -->
+                <video 
+                    id="videoInstitucional" 
+                    class="w-full h-auto rounded-2xl shadow-2xl" 
+                    controls 
+                    preload="metadata"
+                    poster="assets/images/video-poster.jpg">
+                    <source src="assets/videos/videoprueba.mp4" type="video/mp4">
+                    <source src="assets/videos/video-institucional.webm" type="video/webm">
+                    <!-- Mensaje de fallback -->
+                    <div class="flex items-center justify-center h-64 bg-gray-100 text-gray-600 rounded-2xl">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
+                            </svg>
+                            <p class="text-xl mb-2">Tu navegador no soporta el elemento de video</p>
+                            <p class="text-gray-400">Por favor actualiza tu navegador</p>
+                        </div>
+                    </div>
+                </video>
+                
+                <!-- Overlay de carga -->
+                <div id="videoLoading" class="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center hidden rounded-2xl">
+                    <div class="text-center text-gray-700">
+                        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-yellow-500 mx-auto mb-4"></div>
+                        <p class="text-lg">Cargando video...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Sección Equipo -->
     <section id="equipo" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">

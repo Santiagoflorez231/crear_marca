@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initTeamMembers();
   initBusinessModelModal();
   initCompetenciasExpandibles();
+  initVideoPlayer();
 });
 
 function initCarousel() {
@@ -323,14 +324,12 @@ function initActiveNavigation() {
   });
 }
 
-// Función para cambiar el tema (modo oscuro/claro)
 function toggleTheme() {
   document.body.classList.toggle("dark");
   const isDark = document.body.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
 }
 
-// Cargar tema guardado
 function loadTheme() {
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "dark") {
@@ -338,7 +337,6 @@ function loadTheme() {
   }
 }
 
-// Función utilitaria para debounce
 function debounce(func, wait) {
   let timeout;
   return function executedFunction(...args) {
@@ -351,29 +349,22 @@ function debounce(func, wait) {
   };
 }
 
-// Manejar redimensionamiento de ventana
 window.addEventListener(
   "resize",
   debounce(() => {
-    // Aquí puedes agregar lógica para manejar el redimensionamiento
     console.log("Ventana redimensionada");
   }, 250)
 );
 
-// Manejar errores globales
 window.addEventListener("error", (e) => {
   console.error("Error capturado:", e.error);
-  // Aquí podrías enviar errores a un servicio de monitoreo
 });
 
-// Exportar funciones para uso global si es necesario
-// Función para manejar la interactividad de los integrantes del equipo
 function initTeamMembers() {
   const teamMembers = document.querySelectorAll(".team-member");
   const modal = document.getElementById("team-modal");
   const closeModal = document.getElementById("close-modal");
 
-  // Datos de los integrantes del equipo
   const teamData = [
     {
       id: 1,
@@ -477,7 +468,6 @@ function initTeamMembers() {
 
     modal.scrollTop = 0;
 
-    // Prevenir scroll del fondo
     document.body.classList.add("modal-open");
   }
 
@@ -494,7 +484,6 @@ function initTeamMembers() {
     }, 300);
   }
 
-  // Añadir event listener a cada integrante
   teamMembers.forEach((member) => {
     member.addEventListener("click", function () {
       const memberId = this.getAttribute("data-member-id");
@@ -502,32 +491,26 @@ function initTeamMembers() {
     });
   });
 
-  // Evento para cerrar el modal con el botón
   if (closeModal) {
     closeModal.addEventListener("click", closeModalFunction);
   }
 
-  // Cerrar modal al hacer clic fuera del contenido
   modal.addEventListener("click", function (e) {
     if (e.target === this) closeModalFunction();
   });
 }
 
-// Inicializar modal para modelo de negocios
 function initBusinessModelModal() {
   const showModalButton = document.getElementById("show-business-model");
   const modal = document.getElementById("business-model-modal");
   const closeButtons = modal ? modal.querySelectorAll(".close-modal") : [];
 
   if (showModalButton && modal) {
-    // Abrir modal
     showModalButton.addEventListener("click", () => {
       modal.classList.remove("hidden");
-      // Prevenir scroll del fondo
       document.body.classList.add("modal-open");
     });
 
-    // Cerrar modal con botones
     closeButtons.forEach((button) => {
       button.addEventListener("click", () => {
         modal.classList.add("hidden");
@@ -535,7 +518,6 @@ function initBusinessModelModal() {
       });
     });
 
-    // Cerrar modal haciendo clic fuera de ella
     modal.addEventListener("click", (e) => {
       if (e.target === modal) {
         modal.classList.add("hidden");
@@ -543,7 +525,6 @@ function initBusinessModelModal() {
       }
     });
 
-    // Cerrar con la tecla Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && !modal.classList.contains("hidden")) {
         modal.classList.add("hidden");
@@ -553,7 +534,6 @@ function initBusinessModelModal() {
   }
 }
 
-// Función para manejar competencias expandibles
 function initCompetenciasExpandibles() {
   const botonesExpandir = document.querySelectorAll('.btn-expandir');
   
@@ -567,13 +547,11 @@ function initCompetenciasExpandibles() {
       const estaExpandido = textoExpandible.style.maxHeight && textoExpandible.style.maxHeight !== '0px';
       
       if (estaExpandido) {
-        // Contraer
         textoExpandible.style.maxHeight = '0px';
         textoExpandible.style.opacity = '0';
         iconoFlecha.style.transform = 'rotate(0deg)';
         textoBtn.textContent = 'Ver más';
       } else {
-        // Expandir
         textoExpandible.style.maxHeight = textoExpandible.scrollHeight + 'px';
         textoExpandible.style.opacity = '1';
         iconoFlecha.style.transform = 'rotate(180deg)';
@@ -581,6 +559,95 @@ function initCompetenciasExpandibles() {
       }
     });
   });
+}
+
+// Función para manejar el reproductor de video institucional
+function initVideoPlayer() {
+  const video = document.getElementById('videoInstitucional');
+  const loading = document.getElementById('videoLoading');
+  const durationElement = document.getElementById('videoDuration');
+  
+  if (!video) return;
+
+  // Mostrar loading mientras carga el video
+  video.addEventListener('loadstart', function() {
+    if (loading) loading.classList.remove('hidden');
+  });
+
+  // Ocultar loading cuando el video está listo
+  video.addEventListener('loadeddata', function() {
+    if (loading) loading.classList.add('hidden');
+  });
+
+  // Actualizar la duración cuando los metadatos estén cargados
+  video.addEventListener('loadedmetadata', function() {
+    if (durationElement) {
+      const minutes = Math.floor(video.duration / 60);
+      const seconds = Math.floor(video.duration % 60);
+      durationElement.textContent = `${minutes}:${seconds.toString().padStart(2, '0')} min`;
+    }
+  });
+
+  // Manejar errores de carga
+  video.addEventListener('error', function() {
+    if (loading) {
+      loading.innerHTML = `
+        <div class="text-center text-white">
+          <svg class="w-12 h-12 mx-auto mb-4 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+          </svg>
+          <p class="text-lg mb-2">Error al cargar el video</p>
+          <p class="text-gray-400">Por favor verifica la conexión</p>
+        </div>
+      `;
+      loading.classList.remove('hidden');
+    }
+  });
+
+  // Analytics básicos de video (opcional)
+  let hasStarted = false;
+  let hasReached25 = false;
+  let hasReached50 = false;
+  let hasReached75 = false;
+
+  video.addEventListener('play', function() {
+    if (!hasStarted) {
+      console.log('📹 Video institucional: Reproducción iniciada');
+      hasStarted = true;
+    }
+  });
+
+  video.addEventListener('timeupdate', function() {
+    const progress = (video.currentTime / video.duration) * 100;
+    
+    if (progress >= 25 && !hasReached25) {
+      console.log('📹 Video institucional: 25% visto');
+      hasReached25 = true;
+    } else if (progress >= 50 && !hasReached50) {
+      console.log('📹 Video institucional: 50% visto');
+      hasReached50 = true;
+    } else if (progress >= 75 && !hasReached75) {
+      console.log('📹 Video institucional: 75% visto');
+      hasReached75 = true;
+    }
+  });
+
+  video.addEventListener('ended', function() {
+    console.log('📹 Video institucional: Reproducción completa');
+  });
+
+  // Lazy loading del video para mejor performance
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // El video está visible, precarga los metadatos
+        video.preload = 'metadata';
+        observer.unobserve(video);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(video);
 }
 
 window.LandingPage = {
