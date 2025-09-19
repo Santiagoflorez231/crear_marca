@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   initCarousel();
   initTeamMembers();
   initBusinessModelModal();
+  initCompetenciasExpandibles();
 });
 
 function initCarousel() {
@@ -26,9 +27,7 @@ function initCarousel() {
   let currentIndex = 0;
   let autoSlideInterval;
 
-  // Función para mostrar slide específico
   function showSlide(index) {
-    // Ocultar todos los slides
     items.forEach((item, i) => {
       if (i === index) {
         item.classList.add("active");
@@ -42,7 +41,6 @@ function initCarousel() {
       }
     });
 
-    // Actualizar indicadores
     indicators.forEach((indicator, i) => {
       if (i === index) {
         indicator.classList.add("active");
@@ -58,19 +56,16 @@ function initCarousel() {
     currentIndex = index;
   }
 
-  // Función para ir al siguiente slide
   function nextSlide() {
     const next = currentIndex === items.length - 1 ? 0 : currentIndex + 1;
     showSlide(next);
   }
 
-  // Función para ir al slide anterior
   function prevSlide() {
     const prev = currentIndex === 0 ? items.length - 1 : currentIndex - 1;
     showSlide(prev);
   }
 
-  // Event listeners para botones de navegación
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
       nextSlide();
@@ -85,7 +80,6 @@ function initCarousel() {
     });
   }
 
-  // Event listeners para indicadores
   indicators.forEach((indicator, index) => {
     indicator.addEventListener("click", () => {
       showSlide(index);
@@ -93,7 +87,6 @@ function initCarousel() {
     });
   });
 
-  // Auto-slide cada 5 segundos
   function startAutoSlide() {
     autoSlideInterval = setInterval(nextSlide, 5000);
   }
@@ -109,15 +102,12 @@ function initCarousel() {
     startAutoSlide();
   }
 
-  // Pausar auto-slide al hacer hover
   carousel.addEventListener("mouseenter", stopAutoSlide);
   carousel.addEventListener("mouseleave", startAutoSlide);
 
-  // Inicializar
   showSlide(0);
   startAutoSlide();
 
-  // Soporte para swipe en móviles
   let startX = null;
   let startY = null;
 
@@ -135,14 +125,12 @@ function initCarousel() {
     const deltaX = startX - endX;
     const deltaY = startY - endY;
 
-    // Solo procesar swipe horizontal si es mayor que vertical
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
       if (Math.abs(deltaX) > 50) {
-        // Mínimo 50px para activar swipe
         if (deltaX > 0) {
-          nextSlide(); // Swipe left -> next
+          nextSlide(); 
         } else {
-          prevSlide(); // Swipe right -> prev
+          prevSlide(); 
         }
         resetAutoSlide();
       }
@@ -153,7 +141,6 @@ function initCarousel() {
   });
 }
 
-// Menú móvil
 function initMobileMenu() {
   const mobileMenuBtn = document.getElementById("mobile-menu-btn");
   const mobileMenu = document.getElementById("mobile-menu");
@@ -163,7 +150,6 @@ function initMobileMenu() {
       mobileMenu.classList.toggle("hidden");
     });
 
-    // Cerrar menú al hacer click en un enlace
     const mobileLinks = mobileMenu.querySelectorAll("a");
     mobileLinks.forEach((link) => {
       link.addEventListener("click", () => {
@@ -173,7 +159,6 @@ function initMobileMenu() {
   }
 }
 
-// Navegación suave
 function initSmoothScroll() {
   const navLinks = document.querySelectorAll('a[href^="#"]');
 
@@ -185,7 +170,7 @@ function initSmoothScroll() {
       const targetSection = document.querySelector(targetId);
 
       if (targetSection) {
-        const offsetTop = targetSection.offsetTop - 80; // Ajuste para el header fijo
+        const offsetTop = targetSection.offsetTop - 80; 
 
         window.scrollTo({
           top: offsetTop,
@@ -196,7 +181,6 @@ function initSmoothScroll() {
   });
 }
 
-// Formulario de contacto
 function initContactForm() {
   const contactForm = document.getElementById("contact-form");
 
@@ -204,12 +188,10 @@ function initContactForm() {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Obtener valores del formulario
       const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const message = document.getElementById("message").value.trim();
 
-      // Validación básica
       if (!name || !email || !message) {
         showNotification("Por favor, completa todos los campos", "error");
         return;
@@ -220,7 +202,6 @@ function initContactForm() {
         return;
       }
 
-      // Simular envío del formulario
       showLoader();
 
       setTimeout(() => {
@@ -235,25 +216,20 @@ function initContactForm() {
   }
 }
 
-// Validar email
 function isValidEmail(email) {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
 
-// Mostrar notificación
 function showNotification(message, type = "info") {
-  // Remover notificación existente
   const existingNotification = document.querySelector(".notification");
   if (existingNotification) {
     existingNotification.remove();
   }
 
-  // Crear nueva notificación
   const notification = document.createElement("div");
   notification.className = `notification fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 translate-x-full`;
 
-  // Estilos según el tipo
   switch (type) {
     case "success":
       notification.classList.add("bg-green-500", "text-white");
@@ -268,12 +244,10 @@ function showNotification(message, type = "info") {
   notification.textContent = message;
   document.body.appendChild(notification);
 
-  // Animación de entrada
   setTimeout(() => {
     notification.classList.remove("translate-x-full");
   }, 100);
 
-  // Auto-remover después de 5 segundos
   setTimeout(() => {
     notification.classList.add("translate-x-full");
     setTimeout(() => {
@@ -284,7 +258,6 @@ function showNotification(message, type = "info") {
   }, 5000);
 }
 
-// Mostrar loader
 function showLoader() {
   const loader = document.createElement("div");
   loader.id = "loader";
@@ -294,7 +267,6 @@ function showLoader() {
   document.body.appendChild(loader);
 }
 
-// Ocultar loader
 function hideLoader() {
   const loader = document.getElementById("loader");
   if (loader) {
@@ -302,7 +274,6 @@ function hideLoader() {
   }
 }
 
-// Animaciones al hacer scroll
 function initScrollAnimations() {
   const observerOptions = {
     threshold: 0.1,
@@ -318,14 +289,12 @@ function initScrollAnimations() {
     });
   }, observerOptions);
 
-  // Observar elementos para animar
   const elementsToAnimate = document.querySelectorAll(".bg-white, h2, h3");
   elementsToAnimate.forEach((el) => {
     observer.observe(el);
   });
 }
 
-// Navegación activa según scroll
 function initActiveNavigation() {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll('nav a[href^="#"]');
@@ -582,6 +551,36 @@ function initBusinessModelModal() {
       }
     });
   }
+}
+
+// Función para manejar competencias expandibles
+function initCompetenciasExpandibles() {
+  const botonesExpandir = document.querySelectorAll('.btn-expandir');
+  
+  botonesExpandir.forEach(boton => {
+    boton.addEventListener('click', function() {
+      const card = this.closest('.competencia-card');
+      const textoExpandible = card.querySelector('.texto-expandible');
+      const iconoFlecha = this.querySelector('svg');
+      const textoBtn = this.querySelector('.texto-btn');
+      
+      const estaExpandido = textoExpandible.style.maxHeight && textoExpandible.style.maxHeight !== '0px';
+      
+      if (estaExpandido) {
+        // Contraer
+        textoExpandible.style.maxHeight = '0px';
+        textoExpandible.style.opacity = '0';
+        iconoFlecha.style.transform = 'rotate(0deg)';
+        textoBtn.textContent = 'Ver más';
+      } else {
+        // Expandir
+        textoExpandible.style.maxHeight = textoExpandible.scrollHeight + 'px';
+        textoExpandible.style.opacity = '1';
+        iconoFlecha.style.transform = 'rotate(180deg)';
+        textoBtn.textContent = 'Ver menos';
+      }
+    });
+  });
 }
 
 window.LandingPage = {
